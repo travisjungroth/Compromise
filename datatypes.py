@@ -1,4 +1,4 @@
-from collections import UserDict, UserList
+from collections import UserDict, UserList, defaultdict
 from math import floor
 import random
 
@@ -6,17 +6,18 @@ from number import *
 
 
 class SemiMutableSequence(UserList):
-    def __init__(self, data):
+    def __init__(self, data, times=2):
         super(SemiMutableSequence, self).__init__(data)
-        self._updates = set()
+        self.times = times
+        self._updates = defaultdict(int)
 
     def __setitem__(self, index, value):
         update = (index, value)
-        if update in self._updates:
+        if self._updates[update] >= self.times - 1:
             self.data[index] = value
-            self._updates.discard(update)
+            del self._updates[update]
         else:
-            self._updates.add(update)
+            self._updates[update] += 1
             raise TypeError('{} object does not support item assignment'.format(self.__class__.__name__))
 
     def __repr__(self):

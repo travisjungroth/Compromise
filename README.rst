@@ -52,6 +52,20 @@ Unless you, like, really want to.
     >>> t
     SemiMutableSequence([0, 7, 2, 3, 4])
 
+But why should you be limited to a single attempt? Try a few times. If you really want mutability, you have to work for it.
+
+.. code-block:: python
+
+    >>> t = SemiMutableSequence(range(5), times=5)
+    >>> for _ in range(4):
+    ...     try:
+    ...         t[1] = 7
+    ...     except TypeError:
+    ...         pass
+    >>> t[1] = 7
+    >>> t
+    SemiMutableSequence([0, 7, 2, 3, 4])
+
 Magic Numbers are bad. Who could possibly understand what this means?
 
 .. code-block:: python
