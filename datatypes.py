@@ -102,6 +102,19 @@ class SomethingElse(UserDict):
             raise ValueError('{} needs at least two entries'.format(self.__class__.__name__))
 
 
+class NamedAnonymousFunction:
+    def __init__(self, func, name='anonymous function', doc=''):
+        self.func = func
+        self.__doc__ = doc
+        self.name = name
+
+    def __call__(self, *args, **kwargs):
+        self.func(*args, **kwargs)
+
+    def __repr__(self):
+        return self.name
+
+
 def enumerate(iterable, start=0):
     offset = getattr(iterable, 'start', 0)
     for i, item in __builtins__.enumerate(iterable, start):
