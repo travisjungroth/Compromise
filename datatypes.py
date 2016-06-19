@@ -49,6 +49,9 @@ class FlexibleList(UserList):
         i = self._convert(i)
         return super(FlexibleList, self).insert(i, item)
 
+    def __iter__(self):
+        return iter(self.data)
+
     def index(self, item, *args):
         i = super(FlexibleList, self).index(item, *args)
         return i + 0.5
