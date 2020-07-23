@@ -4,7 +4,7 @@ Compromise: Datatypes for Reasonable People
 `PyCon 2016 Lightning Talk`_
 ----------------------------
 
-.. _PyCon 2016 Lightning Talk: https://www.youtube.com/watch?v=yC9m2GInXqU&feature=youtu.be&t=330/
+.. _PyCon 2016 Lightning Talk: https://youtu.be/yC9m2GInXqU?t=337
 
     Should array indices start at 0 or 1? My compromise of 0.5 was rejected without, I thought, proper consideration.
 
