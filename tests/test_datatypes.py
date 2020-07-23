@@ -293,3 +293,13 @@ class TestSemiMutableSequence(TestUserList):
             self.data[index] = self.new_item
         self.data[index] = self.new_item
         self.assertEqual(self.data[index], self.new_item)
+
+    def test_set_item_n(self):
+        index = 0
+        self.data.times = 3
+        for _ in range(self.data.times - 1):
+            with self.assertRaises(TypeError):
+                self.data[index] = self.new_item
+        # nth time's a charm
+        self.data[index] = self.new_item
+        self.assertEqual(self.data[index], self.new_item)
